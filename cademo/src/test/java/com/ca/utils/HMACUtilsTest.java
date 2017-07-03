@@ -36,5 +36,4 @@ public class HMACUtilsTest {
         assertEquals("09341D024E8004631C3B8BE11F545602", target);
     }
 
-
 } 
