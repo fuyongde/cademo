@@ -1,5 +1,7 @@
 package com.ca.coder;
 
+import com.ca.utils.Base64Utils;
+
 import javax.crypto.Cipher;
 import java.io.FileInputStream;
 import java.security.KeyStore;
@@ -14,7 +16,7 @@ import java.util.Date;
 /**
  * Created by fuyongde on 2017/6/29.
  */
-public abstract class CertificateCoder extends Coder {
+public class CertificateCoder {
     /**
      * Java密钥库(Java Key Store，JKS)KEY_STORE
      */
@@ -263,7 +265,7 @@ public abstract class CertificateCoder extends Coder {
         Signature signature = Signature.getInstance(x509Certificate.getSigAlgName());
         signature.initSign(privateKey);
         signature.update(sign);
-        return encryptBASE64(signature.sign());
+        return Base64Utils.encode(signature.sign());
     }
 
     /**
@@ -287,7 +289,7 @@ public abstract class CertificateCoder extends Coder {
         signature.initVerify(publicKey);
         signature.update(data);
 
-        return signature.verify(decryptBASE64(sign));
+        return signature.verify(Base64Utils.decode(sign));
 
     }
 

@@ -15,6 +15,8 @@ public class HMACUtils {
 
     private final static Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
 
+    public final static String DEFAULT_KEY = "7k+PiAUf5RKzuvz19IANz4bm98BzcbN383HymhtiUPItr5QcDSGYulNOZFRYJWkovAGDo+B5qBfd3oR8gPTiww==";
+
     /**
      * MAC算法可选以下多种算法
      *
