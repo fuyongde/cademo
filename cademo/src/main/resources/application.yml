@@ -1,0 +1,11 @@
+server:
+  port: 8443
+  context-path: /cademo
+  ssl:
+    key-store: classpath:dafy.keystore
+    key-store-password: 111111
+    key-password: 111111
+    key-alias: www.dafy.com
+
+logging:
+  config: classpath:logback-spring.xml
