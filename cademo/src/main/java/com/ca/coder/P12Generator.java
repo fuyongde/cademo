@@ -29,7 +29,7 @@ public class P12Generator {
      * @param O
      * @param OU
      * @param L
-     * @param ST
+     * @param S
      * @param C
      * @param start
      * @param end
@@ -43,7 +43,7 @@ public class P12Generator {
      * @throws IOException
      * @throws CertificateException
      */
-    public static byte[] generator(String CN, String O, String OU, String L, String ST, String C, Date start, Date end,
+    public static byte[] generator(String CN, String O, String OU, String L, String S, String C, Date start, Date end,
         String alias, String password
     ) throws NoSuchAlgorithmException, SignatureException, InvalidKeyException, KeyStoreException, IOException, CertificateException {
         StringBuilder DN = new StringBuilder();
@@ -51,7 +51,7 @@ public class P12Generator {
         DN.append("O").append("=").append(O).append(",");
         DN.append("OU").append("=").append(OU).append(",");
         DN.append("L").append("=").append(L).append(",");
-        DN.append("ST").append("=").append(ST).append(",");
+        DN.append("S").append("=").append(S).append(",");
         DN.append("C").append("=").append(C);
         String issuer = DN.toString();
         String subject = DN.toString();

@@ -62,10 +62,8 @@ public class CertificateCoder {
     private static Certificate getCertificate(String certificatePath) throws Exception {
         CertificateFactory certificateFactory = CertificateFactory.getInstance(X509);
         FileInputStream in = new FileInputStream(certificatePath);
-
         Certificate certificate = certificateFactory.generateCertificate(in);
         in.close();
-
         return certificate;
     }
 
