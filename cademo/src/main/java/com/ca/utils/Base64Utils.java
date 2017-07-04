@@ -1,7 +1,6 @@
 package com.ca.utils;
 
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
+import org.apache.commons.codec.binary.Base64;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -16,8 +15,7 @@ public class Base64Utils {
      * @return
      */
     public static String encode(byte[] data) {
-        BASE64Encoder base64Encoder = new BASE64Encoder();
-        return base64Encoder.encode(data);
+        return Base64.encodeBase64String(data);
     }
 
     /**
@@ -27,8 +25,7 @@ public class Base64Utils {
      * @throws IOException
      */
     public static byte[] decode(String target) throws IOException {
-        BASE64Decoder base64Decoder = new BASE64Decoder();
-        return base64Decoder.decodeBuffer(target);
+        return Base64.decodeBase64(target);
     }
 
     /**
