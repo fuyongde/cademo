@@ -6,6 +6,8 @@ server:
     key-store-password: 111111
     key-password: 111111
     key-alias: www.dafy.com
-
 logging:
   config: classpath:logback-spring.xml
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss.SSS
