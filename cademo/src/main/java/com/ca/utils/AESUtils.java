@@ -21,7 +21,7 @@ public class AESUtils {
     private static final SecretKey DEFAULT_KEY = new SecretKeySpec("1234567890123456".getBytes(UTF_8), AES);
 
     //默认的偏移向量
-    private static IvParameterSpec DEFAULT_IV = new IvParameterSpec("1234567890123456".getBytes(UTF_8));
+    private static final IvParameterSpec DEFAULT_IV = new IvParameterSpec("1234567890123456".getBytes(UTF_8));
 
     public static SecretKey getKey() throws NoSuchAlgorithmException {
         //获取密钥生成器
