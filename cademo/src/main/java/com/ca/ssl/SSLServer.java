@@ -78,8 +78,8 @@ public class SSLServer {
             KeyStore ks = KeyStore.getInstance("JKS");
             KeyStore tks = KeyStore.getInstance("JKS");
 
-            ks.load(new FileInputStream("D:\\key\\server.keystore"), SERVER_KEY_STORE_PASSWORD.toCharArray());
-            tks.load(new FileInputStream("D:\\key\\tserver.keystore"), SERVER_TRUST_KEY_STORE_PASSWORD.toCharArray());
+            ks.load(SSLServer.class.getResourceAsStream("/key/server.keystore"), SERVER_KEY_STORE_PASSWORD.toCharArray());
+            tks.load(SSLServer.class.getResourceAsStream("/key/tserver.keystore"), SERVER_TRUST_KEY_STORE_PASSWORD.toCharArray());
 
             kmf.init(ks, SERVER_KEY_STORE_PASSWORD.toCharArray());
             tmf.init(tks);
