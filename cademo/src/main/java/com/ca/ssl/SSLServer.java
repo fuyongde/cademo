@@ -4,7 +4,10 @@ import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.TrustManagerFactory;
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 import java.security.KeyStore;
 
@@ -28,10 +31,7 @@ public class SSLServer {
     }
 
     /**
-     * <ul>
-     * <li>听SSL Server Socket</li>
-     * <li>由于该程序不是演示Socket监听，所以简单采用单线程形式，并且仅仅接受客户端的消息，并且返回客户端指定消息</li>
-     * </ul>
+     * 监听SSL Server Socket
      */
     public void start() {
         if (serverSocket == null) {
@@ -47,11 +47,11 @@ public class SSLServer {
                 BufferedInputStream bis = new BufferedInputStream(input);
                 BufferedOutputStream bos = new BufferedOutputStream(output);
 
-                byte[] buffer = new byte[20];
+                byte[] buffer = new byte[11];
                 bis.read(buffer);
                 System.out.println(new String(buffer));
 
-                bos.write("Server Echo".getBytes());
+                bos.write("I am server".getBytes("UTF-8"));
                 bos.flush();
 
                 s.close();
@@ -62,11 +62,9 @@ public class SSLServer {
     }
 
     /**
-     * <ul>
-     * <li>ssl连接的重点:</li>
-     * <li>初始化SSLServerSocket</li>
-     * <li>导入服务端私钥KeyStore，导入服务端受信任的KeyStore(客户端的证书)</li>
-     * </ul>
+     * ssl连接的重点:
+     * 初始化SSLServerSocket<
+     * 导入服务端私钥KeyStore，导入服务端受信任的KeyStore(客户端的证书)
      */
     public void init() {
         try {

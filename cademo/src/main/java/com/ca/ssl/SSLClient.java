@@ -42,10 +42,10 @@ public class SSLClient {
             BufferedInputStream bis = new BufferedInputStream(input);
             BufferedOutputStream bos = new BufferedOutputStream(output);
 
-            bos.write("Client Message".getBytes());
+            bos.write("I am client".getBytes());
             bos.flush();
 
-            byte[] buffer = new byte[20];
+            byte[] buffer = new byte[11];
             bis.read(buffer);
             System.out.println(new String(buffer));
 
@@ -56,11 +56,9 @@ public class SSLClient {
     }
 
     /**
-     * <ul>
-     * <li>ssl连接的重点:</li>
-     * <li>初始化SSLSocket</li>
-     * <li>导入客户端私钥KeyStore，导入客户端受信任的KeyStore(服务端的证书)</li>
-     * </ul>
+     * ssl连接的重点:
+     * 初始化SSLSocket
+     * 导入客户端私钥KeyStore，导入客户端受信任的KeyStore(服务端的证书)
      */
     public void init() {
         try {
