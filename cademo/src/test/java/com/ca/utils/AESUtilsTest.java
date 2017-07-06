@@ -37,8 +37,8 @@ public class AESUtilsTest {
     }
 
     @Test
-    public void test1000() throws Exception {
-        for (int i = 0; i < 1000; i++) {
+    public void test10000() throws Exception {
+        for (int i = 0; i < 10000; i++) {
             String target = AESUtils.encrypt("dafy");
             String source = AESUtils.decrypt(target);
         }
