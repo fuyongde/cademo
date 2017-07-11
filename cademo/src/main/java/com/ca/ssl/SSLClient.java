@@ -1,13 +1,20 @@
 package com.ca.ssl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.TrustManagerFactory;
 import java.io.*;
 import java.security.KeyStore;
+import java.security.Provider;
 
 public class SSLClient {
+
+    private static Logger logger = LoggerFactory.getLogger(SSLClient.class);
+
     private static final String DEFAULT_HOST = "127.0.0.1";
     private static final int DEFAULT_PORT = 7777;
 
@@ -63,6 +70,10 @@ public class SSLClient {
     public void init() {
         try {
             SSLContext ctx = SSLContext.getInstance("SSL");
+
+            Provider provider = ctx.getProvider();
+
+            provider.forEach((key, value)-> logger.info("{} : {}", key, value));
 
             KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
             TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");

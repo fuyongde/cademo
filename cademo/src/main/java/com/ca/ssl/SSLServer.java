@@ -1,5 +1,8 @@
 package com.ca.ssl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLServerSocket;
@@ -10,8 +13,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.security.KeyStore;
+import java.security.Provider;
 
 public class SSLServer {
+
+    private static Logger logger = LoggerFactory.getLogger(SSLServer.class);
+
     private static final int DEFAULT_PORT = 7777;
 
     private static final String SERVER_KEY_STORE_PASSWORD = "111111";
@@ -54,7 +61,7 @@ public class SSLServer {
                 bos.write("I am server".getBytes("UTF-8"));
                 bos.flush();
 
-                s.close();
+                //s.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -69,6 +76,9 @@ public class SSLServer {
     public void init() {
         try {
             SSLContext ctx = SSLContext.getInstance("SSL");
+
+            Provider provider = ctx.getProvider();
+            provider.forEach((key, value)-> logger.info("{} : {}", key, value));
 
             KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
             TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
