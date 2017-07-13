@@ -6,6 +6,9 @@ server:
     key-store-password: 111111
     key-password: 111111
     key-alias: jason
+    trust-store: classpath:jason.keystore
+    trust-store-password: 111111
+    client-auth: need
 logging:
   config: classpath:logback-spring.xml
 spring:
