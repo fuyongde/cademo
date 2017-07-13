@@ -2,11 +2,11 @@ server:
   port: 8443
   context-path: /cademo
   ssl:
-    key-store: classpath:jason.keystore
+    key-store: classpath:certs/server.keystore
     key-store-password: 111111
     key-password: 111111
-    key-alias: jason
-    trust-store: classpath:jason.keystore
+    key-alias: server
+    trust-store: classpath:certs/server.keystore
     trust-store-password: 111111
     client-auth: need
 logging:

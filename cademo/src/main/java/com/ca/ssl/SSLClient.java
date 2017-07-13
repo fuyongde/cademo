@@ -81,8 +81,8 @@ public class SSLClient {
             KeyStore ks = KeyStore.getInstance("JKS");
             KeyStore tks = KeyStore.getInstance("JKS");
 
-            ks.load(SSLClient.class.getResourceAsStream("/key/client.keystore"), CLIENT_KEY_STORE_PASSWORD.toCharArray());
-            tks.load(SSLClient.class.getResourceAsStream("/key/tclient.keystore"), CLIENT_TRUST_KEY_STORE_PASSWORD.toCharArray());
+            ks.load(SSLClient.class.getResourceAsStream("/certs/client.p12"), CLIENT_KEY_STORE_PASSWORD.toCharArray());
+            tks.load(SSLClient.class.getResourceAsStream("/certs/client.p12"), CLIENT_TRUST_KEY_STORE_PASSWORD.toCharArray());
 
             kmf.init(ks, CLIENT_KEY_STORE_PASSWORD.toCharArray());
             tmf.init(tks);

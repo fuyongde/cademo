@@ -70,7 +70,7 @@ public class SSLServer {
 
     /**
      * ssl连接的重点:
-     * 初始化SSLServerSocket<
+     * 初始化SSLServerSocket
      * 导入服务端私钥KeyStore，导入服务端受信任的KeyStore(客户端的证书)
      */
     public void init() {
@@ -86,8 +86,8 @@ public class SSLServer {
             KeyStore ks = KeyStore.getInstance("JKS");
             KeyStore tks = KeyStore.getInstance("JKS");
 
-            ks.load(SSLServer.class.getResourceAsStream("/key/server.keystore"), SERVER_KEY_STORE_PASSWORD.toCharArray());
-            tks.load(SSLServer.class.getResourceAsStream("/key/tserver.keystore"), SERVER_TRUST_KEY_STORE_PASSWORD.toCharArray());
+            ks.load(SSLServer.class.getResourceAsStream("/certs/server.keystore"), SERVER_KEY_STORE_PASSWORD.toCharArray());
+            tks.load(SSLServer.class.getResourceAsStream("/certs/server.keystore"), SERVER_TRUST_KEY_STORE_PASSWORD.toCharArray());
 
             kmf.init(ks, SERVER_KEY_STORE_PASSWORD.toCharArray());
             tmf.init(tks);
